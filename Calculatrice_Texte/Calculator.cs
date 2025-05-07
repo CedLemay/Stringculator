@@ -275,7 +275,6 @@ namespace Calculatrice_Texte
             int preZeroEnd      = -1;
 
             int postZeroBegin   = -1;
-            int postZeroEnd     = -1;
 
             foreach (var (c,i) in n.Select((c,i) => (c,i)))
             {
@@ -284,46 +283,38 @@ namespace Calculatrice_Texte
                     beforeDecimal = false;
                     checkingForLeading = true;
                 }
-                else if (c == '0' && checkingForLeading)
-                {
-                    if (checkingForLeading)
-                    {
-                        if(beforeDecimal)
-                            preZeroEnd = i;
 
+                else if (beforeDecimal && !checkingForLeading)
+                    continue;
+
+                else if (c == '0')
+                {
+                    if(beforeDecimal)
+                    {
+                        preZeroEnd = i;
                     }
                     else
                     {
-
+                        checkingForLeading = true;
+                        postZeroBegin = postZeroBegin == -1 ? i : postZeroBegin;
                     }
-
-                    //if (beforeDecimal && preZeroEnd == i - 1)
-                    //{
-                    //    preZeroEnd = i;
-                    //}
-                    //else if (!beforeDecimal)
-                    //{
-                    //    if (postZeroBegin == -1)
-                    //    {
-                    //        postZeroBegin = i;
-                    //    }
-                    //    postZeroEnd = i;
-                    //}
                 }
                 else
                 {
-                    if (beforeDecimal)
-                        checkingForLeading = false;
+                    checkingForLeading = false;
 
-
+                    if (!beforeDecimal)
+                    { 
+                        postZeroBegin = -1;
+                    }       
                 }
-
-
             }
 
-            preZeroEnd = Math.Max(0, preZeroEnd);
+            preZeroEnd      = Math.Max(0, preZeroEnd + 1);
+            postZeroBegin   = Math.Max(0, postZeroBegin-1);
+            int subLength   = n.Length - preZeroEnd - postZeroBegin;
 
-            n = n.Substring(0, preZeroEnd) + n.Substring(preZeroEnd, postZeroBegin)
+            n = n.Substring(preZeroEnd, subLength);
 
         }
 

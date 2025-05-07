@@ -72,6 +72,17 @@ namespace Calculatrice_Texte.Test
             Assert.Equal(expected, result);
         }
 
+        [Theory]
+        [InlineData("8,1", "9", "0,9")]
+        [InlineData("81", "30", "2,7")]
+        [InlineData("0,5", "0,05", "10")]
+        public void Test_DivideNumbers(string n1, string n2, string expected)
+        {
+            string result = Calculator.DivideNumbers(n1, n2);
+            Assert.Equal(expected, result);
+        }
+
+
         //[Theory]
         //[InlineData("38", 4)]  // Inside
         //[InlineData("54", 6)]  // Equal
@@ -87,14 +98,5 @@ namespace Calculatrice_Texte.Test
 
 
 
-        //[Theory]
-        //[InlineData("81", "9", "9")]
-        //[InlineData("81", "3", "27")]
-        //[InlineData("625", "625", "1")]
-        //public void Test_DivideNumbers(string n1, string n2, string expected)
-        //{
-        //    string result = Calculator.DivideNumbers(n1, n2);
-        //    Assert.Equal(expected, result);
-        //}
     }
 }
