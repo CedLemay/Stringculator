@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2NDVvZxnp7/tj76e/+CqcVzb0QZ8p6JmgQbwqmftwc8ZI0qvPh0kjT23xLKOGEglYx7N7xDaQfZVuQumiA62Lg==",
+  "dgSpecHash": "1T9E8mDKUc4zv0nzRz+M6En/e1zXuqgt+sA03vhm+KfAYEKn2AgsYj810Ovfk/LYs7ZFyrA1wDj1i54Zt0tS5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cedrick\\source\\repos\\CalculatorTest\\Calculatrice_Texte.Test.csproj",
+  "projectFilePath": "C:\\My Projects Repo\\Stringculator\\CalculatorTest\\Calculatrice_Texte.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cedrick\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\Cedrick\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

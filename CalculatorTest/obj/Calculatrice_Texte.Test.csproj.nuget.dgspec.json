@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cedrick\\source\\repos\\CalculatorTest\\Calculatrice_Texte.Test.csproj": {}
+    "C:\\My Projects Repo\\Stringculator\\CalculatorTest\\Calculatrice_Texte.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cedrick\\source\\repos\\CalculatorTest\\Calculatrice_Texte.Test.csproj": {
+    "C:\\My Projects Repo\\Stringculator\\CalculatorTest\\Calculatrice_Texte.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cedrick\\source\\repos\\CalculatorTest\\Calculatrice_Texte.Test.csproj",
+        "projectUniqueName": "C:\\My Projects Repo\\Stringculator\\CalculatorTest\\Calculatrice_Texte.Test.csproj",
         "projectName": "Calculatrice_Texte.Test",
-        "projectPath": "C:\\Users\\Cedrick\\source\\repos\\CalculatorTest\\Calculatrice_Texte.Test.csproj",
+        "projectPath": "C:\\My Projects Repo\\Stringculator\\CalculatorTest\\Calculatrice_Texte.Test.csproj",
         "packagesPath": "C:\\Users\\Cedrick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cedrick\\source\\repos\\CalculatorTest\\obj\\",
+        "outputPath": "C:\\My Projects Repo\\Stringculator\\CalculatorTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Cedrick\\source\\repos\\Calculatrice_Texte\\Calculatrice_Texte.csproj": {
-                "projectPath": "C:\\Users\\Cedrick\\source\\repos\\Calculatrice_Texte\\Calculatrice_Texte.csproj"
+              "C:\\My Projects Repo\\Stringculator\\Calculatrice_Texte\\Calculatrice_Texte.csproj": {
+                "projectPath": "C:\\My Projects Repo\\Stringculator\\Calculatrice_Texte\\Calculatrice_Texte.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\Cedrick\\source\\repos\\Calculatrice_Texte\\Calculatrice_Texte.csproj": {
+    "C:\\My Projects Repo\\Stringculator\\Calculatrice_Texte\\Calculatrice_Texte.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cedrick\\source\\repos\\Calculatrice_Texte\\Calculatrice_Texte.csproj",
+        "projectUniqueName": "C:\\My Projects Repo\\Stringculator\\Calculatrice_Texte\\Calculatrice_Texte.csproj",
         "projectName": "Calculatrice_Texte",
-        "projectPath": "C:\\Users\\Cedrick\\source\\repos\\Calculatrice_Texte\\Calculatrice_Texte.csproj",
+        "projectPath": "C:\\My Projects Repo\\Stringculator\\Calculatrice_Texte\\Calculatrice_Texte.csproj",
         "packagesPath": "C:\\Users\\Cedrick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cedrick\\source\\repos\\Calculatrice_Texte\\obj\\",
+        "outputPath": "C:\\My Projects Repo\\Stringculator\\Calculatrice_Texte\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Calculatrice_Texte
 {
@@ -261,7 +262,69 @@ namespace Calculatrice_Texte
             if (isAnyDecimal)
                 currentSum = currentSum.Substring(0, currentSum.Length - resultCommaPos) + ',' + currentSum.Substring(currentSum.Length - resultCommaPos, resultCommaPos);
 
+            CleanLeadingZeroes(ref currentSum);
+
             return currentSum;
+        }
+
+        private static void CleanLeadingZeroes(ref string n)
+        {
+            bool beforeDecimal = true;
+            bool checkingForLeading = true;
+
+            int preZeroEnd      = -1;
+
+            int postZeroBegin   = -1;
+            int postZeroEnd     = -1;
+
+            foreach (var (c,i) in n.Select((c,i) => (c,i)))
+            {
+                if (c == ',')
+                {
+                    beforeDecimal = false;
+                    checkingForLeading = true;
+                }
+                else if (c == '0' && checkingForLeading)
+                {
+                    if (checkingForLeading)
+                    {
+                        if(beforeDecimal)
+                            preZeroEnd = i;
+
+                    }
+                    else
+                    {
+
+                    }
+
+                    //if (beforeDecimal && preZeroEnd == i - 1)
+                    //{
+                    //    preZeroEnd = i;
+                    //}
+                    //else if (!beforeDecimal)
+                    //{
+                    //    if (postZeroBegin == -1)
+                    //    {
+                    //        postZeroBegin = i;
+                    //    }
+                    //    postZeroEnd = i;
+                    //}
+                }
+                else
+                {
+                    if (beforeDecimal)
+                        checkingForLeading = false;
+
+
+                }
+
+
+            }
+
+            preZeroEnd = Math.Max(0, preZeroEnd);
+
+            n = n.Substring(0, preZeroEnd) + n.Substring(preZeroEnd, postZeroBegin)
+
         }
 
         private static string MultiplyChars(char c1, char c2)
