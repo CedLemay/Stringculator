@@ -18,8 +18,8 @@ namespace Calculatrice_Texte.Test
 
 
         [Theory]
-        [InlineData("123,")] 
-        [InlineData("123,456,789")]  
+        [InlineData("123,")]
+        [InlineData("123,456,789")]
         public void TestValidateFalse(string value)
         {
             Assert.False(Calculator.Validate(value));
@@ -36,7 +36,7 @@ namespace Calculatrice_Texte.Test
             Assert.Equal(expected, new string[] { n1, n2 });
         }
 
-        
+
 
         [Theory]
         [InlineData("352,5", "6,78966", "359,28966")]
@@ -80,6 +80,20 @@ namespace Calculatrice_Texte.Test
         {
             string result = Calculator.DivideNumbers(n1, n2);
             Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("8,10","8,1")]
+        [InlineData("18,10","18,1")]
+        [InlineData("08,10","8,1")]
+        [InlineData("008,100","8,1")]
+        [InlineData("0008,10100","8,101")]
+        [InlineData("08,1","8,1")]
+        [InlineData("0,10","0,1")]
+        public void Test_CleanLeadingZeroes(string n, string expected)
+        {
+            Calculator.CleanLeadingZeroes(ref n);
+            Assert.Equal(expected, n);
         }
 
 

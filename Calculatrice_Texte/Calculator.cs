@@ -14,7 +14,7 @@ namespace Calculatrice_Texte
         static Calculator()
         { InitiateTables(); }
 
-        //
+
         static void Main(string[] args)
         {
             InitiateTables();
@@ -267,13 +267,13 @@ namespace Calculatrice_Texte
             return currentSum;
         }
 
-        private static void CleanLeadingZeroes(ref string n)
+        public static void CleanLeadingZeroes(ref string n)
         {
             bool beforeDecimal = true;
             bool checkingForLeading = true;
 
             int preZeroEnd      = -1;
-
+            int commaPos        = n.IndexOf(',');
             int postZeroBegin   = -1;
 
             foreach (var (c,i) in n.Select((c,i) => (c,i)))
@@ -309,12 +309,16 @@ namespace Calculatrice_Texte
                     }       
                 }
             }
+            
+            int subLength = n.Length;
 
-            preZeroEnd      = Math.Max(0, preZeroEnd + 1);
-            postZeroBegin   = Math.Max(0, postZeroBegin-1);
-            int subLength   = n.Length - preZeroEnd - postZeroBegin;
+            subLength -= commaPos != -1 && postZeroBegin != -1? n.Length - postZeroBegin : 0;
+            subLength -= commaPos != -1 && commaPos == preZeroEnd + 1 ? 0 : preZeroEnd + 1;
 
-            n = n.Substring(preZeroEnd, subLength);
+            int start;
+            start = commaPos != -1 && commaPos == preZeroEnd + 1 ?  preZeroEnd  : preZeroEnd + 1;
+
+            n = n.Substring(start, subLength);
 
         }
 
@@ -327,6 +331,19 @@ namespace Calculatrice_Texte
         {
             string[] n2Multiplicator = new string[10];
 
+            int n1CommaPosition = n1.IndexOf(',');
+            n1CommaPosition = n1CommaPosition == -1 ? n2.Length : n1CommaPosition;
+
+            int n2CommaPosition = n2.IndexOf(',');
+            n2CommaPosition = n2CommaPosition == -1 ? n2.Length : n2CommaPosition;
+
+            n1 = n1.Replace(",", "");
+            n2 = n2.Replace(",", "");
+
+            int tens = n1.Length - n1CommaPosition - (n2.Length - n2CommaPosition);
+
+            CleanLeadingZeroes(ref n2);
+
             n2Multiplicator[0] = "0";
             n2Multiplicator[1] = n2;
 
@@ -335,27 +352,45 @@ namespace Calculatrice_Texte
                 n2Multiplicator[i] = MultiplyNumbers(n2, i.ToString());
             }
 
+
+
+
+
             string currentValue = string.Empty;
             string result = string.Empty;
             int curIndex = 0;
             int subIndex;
+            char currentChar;
 
+            
 
-            while (currentValue != "0" && curIndex < n1.Length)
+            while (true)
             {
-                currentValue += n1[curIndex];
+                currentChar = curIndex < n1.Length ? n1[curIndex] : '';
+                if (currentChar == ',')
+                { 
+                    curIndex++;
+                    continue;
+                }
+
+                currentValue += currentChar;
 
                 subIndex = BinaryGet(currentValue, n2Multiplicator);
 
                 result += subIndex;
 
-                if (result == "0")
-                    result = string.Empty;
+                //if (result == "0")
+                //    result = string.Empty;
 
                 currentValue = SubstractNumbers(currentValue, n2Multiplicator[subIndex]);
                 curIndex++;
+
+                if (curIndex >= n1.Length && currentValue == "0") break;
             }
 
+            // todo: result.length , minus step to end, plus comma position of n1
+
+            //result.Length - curIndex + (n1CommaPosition == -1 ? 0 : 1) + n1CommaPosition;
 
             return result;
         }
