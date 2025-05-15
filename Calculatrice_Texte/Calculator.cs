@@ -362,25 +362,17 @@ namespace Calculatrice_Texte
             int subIndex;
             char currentChar;
 
-            
+            int step = 0;
 
             while (true)
             {
-                currentChar = curIndex < n1.Length ? n1[curIndex] : '';
-                if (currentChar == ',')
-                { 
-                    curIndex++;
-                    continue;
-                }
+                currentChar = curIndex < n1.Length ? n1[curIndex] : '0';                
 
                 currentValue += currentChar;
 
                 subIndex = BinaryGet(currentValue, n2Multiplicator);
 
                 result += subIndex;
-
-                //if (result == "0")
-                //    result = string.Empty;
 
                 currentValue = SubstractNumbers(currentValue, n2Multiplicator[subIndex]);
                 curIndex++;
@@ -390,7 +382,9 @@ namespace Calculatrice_Texte
 
             // todo: result.length , minus step to end, plus comma position of n1
 
-            //result.Length - curIndex + (n1CommaPosition == -1 ? 0 : 1) + n1CommaPosition;
+            result = (result + new string('0', tens)).Insert((result.Length - curIndex + (n1CommaPosition == -1 ? 0 : 1) * n1CommaPosition + tens), ",");
+
+            CleanLeadingZeroes(ref result);
 
             return result;
         }

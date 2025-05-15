@@ -76,6 +76,7 @@ namespace Calculatrice_Texte.Test
         [InlineData("8,1", "9", "0,9")]
         [InlineData("81", "30", "2,7")]
         [InlineData("0,5", "0,05", "10")]
+        [InlineData("10", "1000", "0,01")]        
         public void Test_DivideNumbers(string n1, string n2, string expected)
         {
             string result = Calculator.DivideNumbers(n1, n2);
